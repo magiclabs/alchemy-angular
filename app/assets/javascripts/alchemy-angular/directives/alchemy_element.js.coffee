@@ -1,4 +1,4 @@
-App.directive 'alchemyElement', ['$sce', ($sce) ->
+App.directive 'alchemyElement', [ '$sce', ($sce) ->
   {
     restrict: 'E'
     $scope: {
@@ -12,10 +12,13 @@ App.directive 'alchemyElement', ['$sce', ($sce) ->
       # with 'alchemy/elements' prefix
       scope.elementTemplate = "alchemy/elements/#{scope.element.name}.html"
 
+      scope.safe = (html) -> 
+        $sce.trustAsHtml(html)
+
       # The ingredients of current element
       scope.ingredients = scope.element.ingredients
-
-      # Returns all ingredients with given haven
+      # scope.ingredients[i].value = $sce.trustAsHtml(scope.ingredients[i].value) for i in [ 0..scope.ingredients.length]
+      # Returns all ingredients with given name
       scope.ingredients_with_name = (name) ->
         _.where(scope.ingredients, {name: name})
 
