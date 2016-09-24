@@ -17,7 +17,6 @@ App.directive 'alchemyElement', [ '$sce', ($sce) ->
 
       # The ingredients of current element
       scope.ingredients = scope.element.ingredients
-      # scope.ingredients[i].value = $sce.trustAsHtml(scope.ingredients[i].value) for i in [ 0..scope.ingredients.length]
       # Returns all ingredients with given name
       scope.ingredients_with_name = (name) ->
         _.where(scope.ingredients, {name: name})
