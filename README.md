@@ -45,8 +45,15 @@ This gem also provides Rails generators that generate Angular templates for your
 ```shell
 $ bin/rails g alchemy_angular:templates --skip
 ```
-
 The templates already has some common html markup and use the directive's `$scope` methods to bind the values.
+Whenever you modify your elements.yml, you will need to run this again. Remember to
+delete the view partials (but not the editor's) at this time.
+
+### Create app.js.coffee In Your Project
+
+* Create the file:  ```app/assets/javascripts/app.js.coffee```
+*  Insert following code in it:
+  ```@App = angular.module 'app', ['templates','ngRoute']```
 
 ### Use the element and cell directives
 
